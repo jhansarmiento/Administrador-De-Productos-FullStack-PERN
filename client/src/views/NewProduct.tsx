@@ -1,5 +1,10 @@
 import { Link, Form } from 'react-router-dom'
 
+export async function action() {
+  console.log('From New Product Action')
+  return {}
+}
+
 export default function NewProduct() {
   return (
     <>
