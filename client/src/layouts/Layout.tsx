@@ -9,7 +9,7 @@ export default function Layout() {
             </div>
         </header>
 
-        <main className='rounded-xl mt-10 mx-auto max-w-6xl p-10 bg-white shadow'>
+        <main className='rounded-2xl mt-10 mx-auto max-w-6xl p-10 bg-white shadow'>
             <Outlet />
         </main>
     </>
