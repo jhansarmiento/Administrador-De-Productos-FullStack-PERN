@@ -16,7 +16,7 @@ export async function action({request} : ActionFunctionArgs) {
   }
 
   addProduct(data)
-  return {}
+  return null
 }
 
 export default function NewProduct() {
