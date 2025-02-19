@@ -1,6 +1,6 @@
-import { safeParse } from "valibot"
-import axios from 'axios'
-import { DraftProductSchema, ProductSchema, Product, ProductsSchema } from "../types"
+import { safeParse } from "valibot";
+import axios from 'axios';
+import { DraftProductSchema, ProductsSchema } from "../types";
 
 type ProductData = {
     [k: string]: FormDataEntryValue;

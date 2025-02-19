@@ -1,16 +1,17 @@
 import { Link, useLoaderData } from "react-router-dom";
 import { getProducts } from "../services/ProductService";
-import { Product } from "../types";
 import ProductDetails from "../components/ProductDetails";
+import { Product } from "../types";
+
 
 export async function loader() {
   const products = await getProducts();
+  console.log(products)
   return products;
 }
 
 export default function Products() {
-  const products= useLoaderData() as Product[] // Comunica lo que retorna el loader con el componente
-  console.log(products);
+  const products = useLoaderData() as Product[] // Comunica lo que retorna el loader con el componente
 
   return (
     <>
@@ -35,10 +36,10 @@ export default function Products() {
             </tr>
           </thead>
           <tbody>
-            {products.map( product => (
+            {products.map(product => (
               <ProductDetails
-                key = {product.id}
-                product = {product}
+                key={product.id}
+                product={product}
               />
             ))}
           </tbody>
