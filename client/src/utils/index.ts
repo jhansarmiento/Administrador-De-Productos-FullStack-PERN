@@ -4,3 +4,8 @@ export function  formatCurrency(amount: number) {
         currency: 'USD'
     }).format(amount)
 }
+
+/*Function that turns string into Boolean*/
+export function toBoolean(str : string) { 
+    return str === 'true'
+}

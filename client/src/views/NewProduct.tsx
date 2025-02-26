@@ -58,7 +58,7 @@ export default function NewProduct() {
           <label 
             htmlFor="price"
             className='text-gray-800'
-          >Product Name</label>
+          >Product Price</label>
           <input 
             type="number"
             id="price"
