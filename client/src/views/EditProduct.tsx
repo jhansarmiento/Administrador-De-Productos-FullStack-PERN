@@ -2,6 +2,7 @@ import { Link, Form, useActionData, ActionFunctionArgs, redirect, LoaderFunction
 import ErrorMessage from "../components/ErrorMessage";
 import { getProductById, updateProduct } from "../services/ProductService";
 import { Product } from "../types";
+import ProductForm from "../components/ProductForm";
 
 export async function loader({ params }: LoaderFunctionArgs) {
   if (params.id !== undefined) {
@@ -54,33 +55,10 @@ export default function EditProduct() {
       {error && <ErrorMessage>{error}</ErrorMessage>}
 
       <Form className="mt-10" method="POST">
-        <div className="mb-4">
-          <label htmlFor="name" className="text-gray-800">
-            Product Name
-          </label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            className="mt-2 block w-full p-3 bg-gray-50 rounded-xl"
-            placeholder="Product Name"
-            defaultValue={productById.name}
-          />
-        </div>
 
-        <div className="mb-4">
-          <label htmlFor="price" className="text-gray-800">
-            Product Price
-          </label>
-          <input
-            type="number"
-            id="price"
-            name="price"
-            className="mt-2 block w-full p-3 bg-gray-50 rounded-xl"
-            placeholder="Product Price. e.g 199, 300"
-            defaultValue={productById.price}
-          />
-        </div>
+        <ProductForm 
+          productById={productById}
+        />
 
         <div className="mb-4">
           <label className="text-gray-800" htmlFor="availability">
@@ -102,7 +80,7 @@ export default function EditProduct() {
         <input
           type="submit"
           className="mt-5 p-3 bg-indigo-600 hover:bg-indigo-500 w-full rounded-xl text-white font-bold cursor-pointer"
-          value="Update Product"
+          value="Save Changes"
         />
       </Form>
     </>

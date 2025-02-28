@@ -1,6 +1,7 @@
 import { Link, Form, useActionData, ActionFunctionArgs, redirect } from 'react-router-dom'
 import ErrorMessage from '../components/ErrorMessage'
 import { addProduct } from '../services/ProductService'
+import ProductForm from '../components/ProductForm'
 
 export async function action({request} : ActionFunctionArgs) {
   const data = Object.fromEntries(await request.formData())
@@ -41,32 +42,8 @@ export default function NewProduct() {
       className='mt-10'
       method='POST'
     >
-        <div className='mb-4'>
-          <label 
-            htmlFor="name"
-            className='text-gray-800'
-          >Product Name</label>
-          <input 
-            type="text"
-            id="name"
-            name="name"
-            className="mt-2 block w-full p-3 bg-gray-50 rounded-xl"
-            placeholder="Product Name"
-          />
-        </div>
-        <div className='mb-4'>
-          <label 
-            htmlFor="price"
-            className='text-gray-800'
-          >Product Price</label>
-          <input 
-            type="number"
-            id="price"
-            name="price"
-            className="mt-2 block w-full p-3 bg-gray-50 rounded-xl"
-            placeholder="Product Price. e.g 199, 300"
-          />
-        </div>
+        <ProductForm />
+        
         <input 
           type="submit"
           className='mt-5 p-3 bg-indigo-600 hover:bg-indigo-500 w-full rounded-xl text-white font-bold cursor-pointer'

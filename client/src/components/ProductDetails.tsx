@@ -1,10 +1,18 @@
-import { useNavigate } from "react-router-dom";
+import { Form, useNavigate, ActionFunctionArgs,redirect } from "react-router-dom";
 import { Product } from "../types";
 import { formatCurrency } from "../utils";
+import { deleteProduct } from "../services/ProductService";
 
 type ProductDetailsProps = {
   product: Product;
 };
+
+export async function action({ params }: ActionFunctionArgs) {
+  if (params.id !== undefined) {
+    deleteProduct(+params.id)
+    return redirect('/')
+  }
+}
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
 
@@ -32,6 +40,22 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               })}
               className="bg-indigo-600 text-white p-2 font-bold uppercase text-xs w-full rounded-xl text-center hover:bg-indigo-500 hover:cursor-pointer"
             >Edit</button>
+            <Form 
+              className="w-full"
+              method="POST"
+              action={`/products/${product.id}/delete`}
+              onSubmit={(e) => {
+                if(!confirm('Are you sure you want to delete this product?')){
+                  e.preventDefault()
+                }
+              }}
+            >
+                <input 
+                  type="submit" 
+                  className="bg-red-400 text-white p-2 font-bold uppercase text-xs w-full rounded-xl text-center hover:bg-red-500 hover:cursor-pointer"
+                  value="Delete"
+                />
+            </Form>
         </div>
       </td>
     </tr>
