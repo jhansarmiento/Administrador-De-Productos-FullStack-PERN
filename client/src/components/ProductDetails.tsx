@@ -9,7 +9,7 @@ type ProductDetailsProps = {
 
 export async function action({ params }: ActionFunctionArgs) {
   if (params.id !== undefined) {
-    deleteProduct(+params.id)
+    await deleteProduct(+params.id)
     return redirect('/')
   }
 }
